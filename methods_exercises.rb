@@ -1,7 +1,15 @@
 # Write a method average_of_three(num1, num2, num3) that returns the average of three numbers
 
+=begin
 def average_of_three(num1, num2, num3)
   (num1 + num2 + num3) / 3.0
+end
+=end
+
+def average_of_three(num1, num2, num3)
+  sum = num1 + num2 + num3 
+  avg = sum / 3
+  return avg
 end
 
 # tests
