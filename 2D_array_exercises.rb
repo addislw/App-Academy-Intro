@@ -57,3 +57,39 @@ end
 
 p opposite_count([ 2, 5, 11, -5, -2, 7 ]) # => 2
 p opposite_count([ 21, -23, 24 -12, 23 ]) # => 1
+
+
+
+# Write a method two_d_sum that takes in a two dimensional array and returns the sum of all elements in the array
+
+=begin
+# Solution using built-in flatten and sum method
+def two_d_sum(array)
+  array.flatten.sum
+end
+=end
+
+# Solution 2
+def two_d_sum(array)
+  sum = 0 
+  array.each do |sub_array|
+    sub_array.each do |num|
+      sum += num 
+    end
+  end
+
+  sum
+end
+
+array_1 = [
+  [4, 5],
+  [1, 3, 7, 1]
+]
+puts two_d_sum(array_1)    # => 21
+
+array_2 = [
+  [3, 3],
+  [2],
+  [2, 5]
+]
+puts two_d_sum(array_2)    # => 15
