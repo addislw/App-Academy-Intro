@@ -170,3 +170,27 @@ puts
 
 print array_translate(["red", 3, "blue", 1]); # => "redredredblue"
 puts
+
+
+
+# Write a method pig_latin_word that takes in a word string and translates the word into pig latin
+
+def pig_latin_word(word)
+  word_array = word.split('')
+  vowels = 'aeiou'
+  if vowels.include?(word_array.first)
+    return "#{word_array.join}yay"
+  end
+
+  until vowels.include?(word_array.first)
+    char = word_array.shift
+    word_array.push(char)
+  end
+
+  "#{word_array.join}ay"
+end
+
+puts pig_latin_word("apple")   # => "appleyay"
+puts pig_latin_word("eat")     # => "eatyay"
+puts pig_latin_word("banana")  # => "ananabay"
+puts pig_latin_word("trash")   # => "ashtray"
