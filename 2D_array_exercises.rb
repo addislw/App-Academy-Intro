@@ -93,3 +93,80 @@ array_2 = [
   [2, 5]
 ]
 puts two_d_sum(array_2)    # => 15
+
+
+
+# Write a method two_d_translate that takes in a 2 dimensional array and translates it into a 1 dimensional array. You can assume that the inner arrays always have 2 elements. See the examples
+
+arr_1 = [
+  ['boot', 3],
+  ['camp', 2],
+  ['program', 0]
+]
+
+print two_d_translate(arr_1) # => [ 'boot', 'boot', 'boot', 'camp', 'camp' ]
+puts
+
+arr_2 = [
+  ['red', 1],
+  ['blue', 4]
+]
+
+print two_d_translate(arr_2) # => [ 'red', 'blue', 'blue', 'blue', 'blue' ]
+puts
+
+
+
+# Write a method two_d_translate that takes in a 2 dimensional array and translates it into a 1 dimensional array. You can assume that the inner arrays always have 2 elements. See the examples
+
+def two_d_translate(array)
+  new_array = []
+  array.each do |sub_array|
+    num = sub_array[1]
+    ele = sub_array[0]
+    num.times { new_array << ele }
+  end
+
+  new_array
+end
+
+arr_1 = [
+  ['boot', 3],
+  ['camp', 2],
+  ['program', 0]
+]
+
+print two_d_translate(arr_1) # => [ 'boot', 'boot', 'boot', 'camp', 'camp' ]
+puts
+
+arr_2 = [
+  ['red', 1],
+  ['blue', 4]
+]
+
+print two_d_translate(arr_2) # => [ 'red', 'blue', 'blue', 'blue', 'blue' ]
+puts
+
+
+
+# Write a method array_translate that takes in an array whose elements alternate between words and numbers. The method should return a string where each word is repeated the number of times that immediately follows in the array
+
+def array_translate(array)
+  string = ''
+  i = 0 
+  while i < array.length
+    word = array[i]
+    num = array[i + 1]
+    string += (word * num)
+
+    i += 2
+  end
+
+  string
+end
+
+print array_translate(["Cat", 2, "Dog", 3, "Mouse", 1]); # => "CatCatDogDogDogMouse"
+puts
+
+print array_translate(["red", 3, "blue", 1]); # => "redredredblue"
+puts
