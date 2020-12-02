@@ -93,3 +93,48 @@ end
 
 puts ae_count("everyone can program") #=> {"a"=>2, "e"=>3}
 puts ae_count("keyboard") #=> {"a"=>1, "e"=>1}
+
+
+
+# Write a method element_count that takes in an array and returns a hash representing the count of each element in the array
+
+def element_count(array)
+  hash = Hash.new(0)
+  array.each { |ele| hash[ele] += 1 }
+
+  hash
+end
+
+puts element_count(["a", "b", "a", "a", "b"]) #=> {"a"=>3, "b"=>2}
+puts element_count(["red", "red", "blue", "green"]) #=> {"red"=>2, "blue"=>1, "green"=>1}
+
+
+
+# Write a method select_upcase_keys that takes in a hash and returns a new hash containing key-value pairs of the original hash that had uppercase keys. You can assume that the keys will always be strings
+
+=begin
+# Solution 1 
+def select_upcase_keys(hash)
+  keys = hash.keys
+  upcase_keys = keys.select { |key| key == key.upcase }
+  
+  new_hash = {}
+  hash.each do |k, v| 
+    new_hash[k] = v if upcase_keys.include?(k)
+  end
+
+  new_hash
+end
+=end
+
+# Solution 2 
+def select_upcase_keys(hash)
+  hash.select { |key, val| key == key.upcase }
+
+end
+
+print select_upcase_keys({"make"=> "Tesla", "MODEL"=> "S", "Year"=> 2018, "SEATS"=> 4}) # => {"MODEL"=>"S", "SEATS"=>4}
+puts
+
+print select_upcase_keys({"DATE"=>"July 4th","holiday"=> "Independence Day", "type"=>"Federal"}) # => {"DATE"=>"July 4th"}
+puts
