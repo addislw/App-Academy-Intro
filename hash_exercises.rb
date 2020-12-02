@@ -138,3 +138,38 @@ puts
 
 print select_upcase_keys({"DATE"=>"July 4th","holiday"=> "Independence Day", "type"=>"Federal"}) # => {"DATE"=>"July 4th"}
 puts
+
+
+
+# Write a method hand_score that takes in a string representing a hand of cards and returns it's total score. You can assume the letters in the string are only A, K, Q, J. A is worth 4 points, K is 3 points, Q is 2 points, and J is 1 point. The letters of the input string not necessarily uppercase
+
+def hand_score(string)
+  cards = { A: 4, K: 3, Q: 2, J: 1 }
+  score = 0
+  string.each_char do |char|
+    score += cards[char.upcase.to_sym]
+  end
+
+  score
+end
+
+puts hand_score("AQAJ") #=> 11
+puts hand_score("jJka") #=> 9
+
+
+
+# Write a method frequent_letters that takes in a string and returns an array containing the characters that appeared more than twice in the string
+
+def frequent_letters(string)
+  hash = Hash.new(0)
+  string.each_char do |char|
+    hash[char] += 1
+  end
+
+  hash.keys.select { |k| hash[k] > 2 }
+end
+
+print frequent_letters('mississippi') #=> ["i", "s"]
+puts
+print frequent_letters('bootcamp') #=> []
+puts
