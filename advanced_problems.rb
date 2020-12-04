@@ -73,3 +73,48 @@ end
 
 print o_words("How did you do that?") #=> ["How", "you", "do"]
 puts
+
+
+
+# Write a method last_index that takes in a string and a character. The method should return the last index where the character can be found in the string
+
+def last_index(string, char)
+  i = string.length - 1
+  while i >= 0
+    cur_char = string[i]
+    return i if char == cur_char
+
+    i -= 1 
+  end
+end
+
+puts last_index("abca", "a")       #=> 3
+puts last_index("mississipi", "i") #=> 9
+puts last_index("octagon", "o")    #=> 5
+puts last_index("programming", "m")#=> 7
+
+
+
+# Write a method most_vowels that takes in a sentence string and returns the word of the sentence that contains the most vowels
+
+def most_vowels(string)
+  words_array = string.split
+  vowels = 'aeiou'
+  hash = {}
+  words_array.each do |word|
+    hash[word] = count_vowels(word)
+  end
+  
+  # hash.values.sort
+  sorted = hash.sort_by { |k,v| v}
+  sorted[-1][0]
+end
+
+def count_vowels(word)
+  word = word.split('')
+  vowels = 'aeiou'
+  word.count { |char| vowels.include?(char) }
+end
+
+print most_vowels("what a wonderful life") #=> "wonderful"
+puts
