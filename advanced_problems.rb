@@ -211,3 +211,42 @@ print greatest_factor_array([16, 7, 9, 14]) # => [8, 7, 9, 7]
 puts
 print greatest_factor_array([30, 3, 24, 21, 10]) # => [15, 3, 12, 21, 5]
 puts
+
+
+
+# Write a method perfect_square? that takes in a number and returns a boolean indicating whether it is a perfect square. A perfect square is a number that results from multiplying a number by itself. For example, 9 is a perfect square because 3 * 3 = 9, 25 is a perfect square because 5 * 5 = 25
+
+def perfect_square?(num)
+  (1..num).each do |factor|
+    return true if factor * factor == num
+  end
+
+  false
+end
+
+puts perfect_square?(5)   #=> false
+puts perfect_square?(12)  #=> false
+puts perfect_square?(30)  #=> false
+puts perfect_square?(9)   #=> true
+puts perfect_square?(25)  #=> true
+
+
+
+# Write a method triple_sequence that takes in two numbers, start and length. The method should return an array representing a sequence that begins with start and is length elements long. In the sequence, every element should be 3 times the previous element. Assume that the length is at least 1
+
+def triple_sequence(start, length)
+  array = [start]
+  i = 1
+  while i < length 
+    previous_element = array[i - 1]
+    array.push(previous_element * 3)
+    i += 1
+  end
+
+  array
+end
+
+print triple_sequence(2, 4) # => [2, 6, 18, 54]
+puts
+print triple_sequence(4, 5) # => [4, 12, 36, 108, 324]
+puts
