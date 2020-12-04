@@ -172,3 +172,42 @@ print prime_factors(24) #=> [2, 3]
 puts
 print prime_factors(60) #=> [2, 3, 5]
 puts
+
+
+
+# Write a method greatest_factor_array that takes in an array of numbers and returns a new array where every even number is replaced with it's greatest factor. A greatest factor is the largest number that divides another with no remainder
+
+def greatest_factor_array(array)
+  new_array = []
+
+  array.each do |num|
+    if num % 2 != 0
+      new_array << num 
+    else
+      possible_factors = num - 1 
+      possible_factors.downto(1) do |i|
+        if num % i == 0
+          new_array << i 
+          break
+        end 
+      end
+    end
+  end
+  new_array
+end
+
+=begin
+def greatest_factor(num)
+  debugger
+  num = num - 1
+  num.downto(2) do |i|
+    return i if num % i == 0
+  end
+end
+=end
+
+
+print greatest_factor_array([16, 7, 9, 14]) # => [8, 7, 9, 7]
+puts
+print greatest_factor_array([30, 3, 24, 21, 10]) # => [15, 3, 12, 21, 5]
+puts
