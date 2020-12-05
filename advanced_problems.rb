@@ -303,3 +303,22 @@ print fibonacci(6) # => [1, 1, 2, 3, 5, 8]
 puts
 print fibonacci(8) # => [1, 1, 2, 3, 5, 8, 13, 21]
 puts
+
+
+
+# Write a method caesar_cipher that takes in a string and a number. The method should return a new string where every character of the original is shifted num characters in the alphabet
+
+def caesar_cipher(string, num)
+  alphabet = ('a'..'z').to_a
+  chars = string.split('')
+  chars.map do |char| 
+    cur_idx = alphabet.index(char)
+    new_idx = (cur_idx + num) % 26
+    alphabet[new_idx]
+  end
+  .join
+end
+
+puts caesar_cipher("apple", 1)    #=> "bqqmf"
+puts caesar_cipher("bootcamp", 2) #=> "dqqvecor"
+puts caesar_cipher("zebra", 4)    #=> "difve"
