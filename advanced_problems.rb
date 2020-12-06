@@ -322,3 +322,25 @@ end
 puts caesar_cipher("apple", 1)    #=> "bqqmf"
 puts caesar_cipher("bootcamp", 2) #=> "dqqvecor"
 puts caesar_cipher("zebra", 4)    #=> "difve"
+
+
+
+# Write a method vowel_cipher that takes in a string and returns a new string where every vowel becomes the next vowel in the alphabet
+
+def vowel_cipher(string)
+  vowels = ['a', 'e', 'i', 'o', 'u']
+  chars = string.split('')
+  chars.map do |char|
+    if vowels.include?(char)
+      cur_idx = vowels.index(char)
+      new_idx = (cur_idx + 1) % 5
+      vowels[new_idx]
+    else
+      char
+    end
+  end
+  .join
+end
+
+puts vowel_cipher("bootcamp") #=> buutcemp
+puts vowel_cipher("paper cup") #=> pepir cap
