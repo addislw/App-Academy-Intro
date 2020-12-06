@@ -344,3 +344,23 @@ end
 
 puts vowel_cipher("bootcamp") #=> buutcemp
 puts vowel_cipher("paper cup") #=> pepir cap
+
+
+
+# Write a method that takes in a string and returns the number of times that the same letter repeats twice in a row
+
+def double_letter_count(string)
+  string_array = string.split('')
+  count = 0 
+
+  i = 1
+  while i < string.length
+    count += 1 if string[i] == string[i - 1]
+    i += 1
+  end
+
+  count
+end
+
+puts double_letter_count("the jeep rolled down the hill") #=> 3
+puts double_letter_count("bootcamp") #=> 1
