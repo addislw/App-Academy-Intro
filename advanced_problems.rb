@@ -364,3 +364,50 @@ end
 
 puts double_letter_count("the jeep rolled down the hill") #=> 3
 puts double_letter_count("bootcamp") #=> 1
+
+
+
+# Write a method adjacent_sum that takes in an array of numbers and returns a new array containing the sums of adjacent numbers in the original array
+
+def adjacent_sum(num_array)
+  sum_array = []
+
+  i = 1
+  while i < num_array.length
+    sum_element = num_array[i] + num_array[i - 1]
+    sum_array << sum_element
+
+    i += 1
+  end
+
+  sum_array
+end
+
+print adjacent_sum([3, 7, 2, 11]) #=> [10, 9, 13], because [ 3+7, 7+2, 2+11 ]
+puts
+print adjacent_sum([2, 5, 1, 9, 2, 4]) #=> [7, 6, 10, 11, 6], because [2+5, 5+1, 1+9, 9+2, 2+4]
+puts
+
+
+
+# Write a method pyramid_sum that takes in an array of numbers representing the base of a pyramid. The function should return a 2D array representing a complete pyramid with the given base. To construct a level of the pyramid, we take the sum of adjacent elements of the level below
+
+def pyramid_sum(base)
+  pyramid = [base]
+  
+  i = 0
+  while i < base.length - 1
+    current_level = pyramid[0]
+    next_level = adjacent_sum(current_level)
+    pyramid.unshift(next_level)
+
+    i += 1
+  end
+
+  pyramid
+end
+
+print pyramid_sum([1, 4, 6]) #=> [[15], [5, 10], [1, 4, 6]]
+puts
+print pyramid_sum([3, 7, 2, 11]) #=> [[41], [19, 22], [10, 9, 13], [3, 7, 2, 11]]
+puts
