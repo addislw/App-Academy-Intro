@@ -444,3 +444,31 @@ p anagrams?("cat", "act")          #=> true
 puts anagrams?("restful", "fluster")  #=> true
 puts anagrams?("cat", "dog")          #=> false
 puts anagrams?("boot", "bootcamp")    #=> false
+
+
+
+# Write a method consonant_cancel that takes in a sentence and returns a new sentence where every word begins with it's first vowel
+
+def consonant_cancel(string)
+  vowels = 'aeiou'
+  string = string.split
+  new_string = []
+  
+  string.each do |word|
+    word = word.split('')
+    i = 0
+    while i < word.length
+      if !vowels.include?(word[0])
+        word.shift
+      end
+      i += 1
+    end
+        
+    new_string << word.join
+  end
+  
+  new_string.join(' ')
+end
+# debugger
+puts consonant_cancel("down the rabbit hole") #=> "own e abbit ole"
+puts consonant_cancel("writing code is challenging") #=> "iting ode is allenging"
