@@ -411,3 +411,36 @@ print pyramid_sum([1, 4, 6]) #=> [[15], [5, 10], [1, 4, 6]]
 puts
 print pyramid_sum([3, 7, 2, 11]) #=> [[41], [19, 22], [10, 9, 13], [3, 7, 2, 11]]
 puts
+
+
+
+# Write a method all_else_equal that takes in an array of numbers. The method should return the element of the array that is equal to half of the sum of all elements of the array. If there is no such element, the method should return nil
+
+def all_else_equal(array)
+  sum = array.sum
+  target_half = sum / 2
+  if array.include?(target_half)
+    return target_half
+  else
+    return nil
+  end
+end
+
+p all_else_equal([2, 4, 3, 10, 1]) #=> 10, because the sum of all elements is 20
+p all_else_equal([6, 3, 5, -9, 1]) #=> 3, because the sum of all elements is 6
+p all_else_equal([1, 2, 3, 4])     #=> nil, because the sum of all elements is 10 and there is no 5 in the array
+
+
+
+# Write a method anagrams? that takes in two words and returns a boolean indicating whether or not the words are anagrams. Anagrams are words that contain the same characters but not necessarily in the same order
+
+def anagrams?(word_1, word_2)
+  permutations = word_1.split('').permutation.to_a
+  check_word = word_2.split('')
+  permutations.include?(check_word)
+end
+
+p anagrams?("cat", "act")          #=> true
+puts anagrams?("restful", "fluster")  #=> true
+puts anagrams?("cat", "dog")          #=> false
+puts anagrams?("boot", "bootcamp")    #=> false
